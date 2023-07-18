@@ -7,23 +7,21 @@ import { BaseDialog, TRANSITION_DURATION } from '@/utils/dialog/dialog';
 
 const pause = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-test('render dialog', async () => {
-  const user = userEvent.setup();
-  const closeHandler = vitest.fn();
-  let closeCounter = 0;
-  const beforeCloseHandler = vitest.fn();
-  let beforeCloseCounter = 0;
-
-  const body = <div>example body</div>;
-  const [isHide, setHide] = useState(true);
-
-  render(
+function MockDialog({
+  beforeCloseHandler,
+  closeHandler,
+}: {
+  beforeCloseHandler: () => void;
+  closeHandler: () => void;
+}) {
+  const [isHide, setHide] = useState(false);
+  return (
     <BaseDialog
       isHide={isHide}
       setHide={setHide}
       option={{
         title: '',
-        body,
+        body: <div>example body</div>,
         buttons: [
           {
             label: 'OK',
@@ -44,6 +42,26 @@ test('render dialog', async () => {
       close={closeHandler}
     />
   );
+}
+
+test('render dialog', async () => {
+  const user = userEvent.setup();
+  const closeHandler = vitest.fn();
+  let closeCounter = 0;
+  const beforeCloseHandler = vitest.fn();
+  let beforeCloseCounter = 0;
+
+  render(
+    <MockDialog
+      closeHandler={() => {
+        closeHandler();
+      }}
+      beforeCloseHandler={() => {
+        beforeCloseHandler();
+      }}
+    />
+  );
+
   expect(closeHandler).not.toBeCalled();
   expect(beforeCloseHandler).not.toBeCalled();
   const bodyEl = screen.getByText('example body');
@@ -57,17 +75,58 @@ test('render dialog', async () => {
   await pause(TRANSITION_DURATION);
   expect(closeHandler).toBeCalledTimes(++closeCounter);
   expect(beforeCloseHandler).toBeCalledTimes(++beforeCloseCounter);
+});
+test('dialog ok', async () => {
+  const user = userEvent.setup();
+  const closeHandler = vitest.fn();
+  let closeCounter = 0;
+  const beforeCloseHandler = vitest.fn();
+  const beforeCloseCounter = 0;
+
+  render(
+    <MockDialog
+      closeHandler={() => {
+        closeHandler();
+      }}
+      beforeCloseHandler={() => {
+        beforeCloseHandler();
+      }}
+    />
+  );
+
+  expect(closeHandler).not.toBeCalled();
+  expect(beforeCloseHandler).not.toBeCalled();
 
   await act(async () => {
-    const closeButton = await screen.findByText('OK', {
+    const okButton = await screen.findByText('OK', {
       selector: 'button',
     });
-    await user.click(closeButton);
+    await user.click(okButton);
   });
   await pause(TRANSITION_DURATION);
   expect(closeHandler).toBeCalledTimes(++closeCounter);
   expect(beforeCloseHandler).toBeCalledTimes(beforeCloseCounter);
+});
+test('dialog cancel', async () => {
+  const user = userEvent.setup();
+  const closeHandler = vitest.fn();
+  let closeCounter = 0;
+  const beforeCloseHandler = vitest.fn();
+  let beforeCloseCounter = 0;
 
+  render(
+    <MockDialog
+      closeHandler={() => {
+        closeHandler();
+      }}
+      beforeCloseHandler={() => {
+        beforeCloseHandler();
+      }}
+    />
+  );
+
+  expect(closeHandler).not.toBeCalled();
+  expect(beforeCloseHandler).not.toBeCalled();
   await act(async () => {
     const closeButton = await screen.findByText('cancel', {
       selector: 'button',
