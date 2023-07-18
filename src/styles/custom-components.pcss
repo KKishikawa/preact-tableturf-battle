@@ -1,0 +1,244 @@
+.sp-fill {
+  @apply z-0 border w-3 h-3 box-content border-gray-800 dark:border-black bg-amber-600;
+}
+[data-selected="1"] {
+  .icon-check {
+    @apply !block mr-1 text-green-600 dark:text-green-500;
+  }
+}
+.card-list-container {
+  .button-delete {
+    @apply hidden;
+  }
+  [data-selected="1"] {
+    .button-add {
+      @apply hidden;
+    }
+    .button-delete {
+      @apply inline-block;
+    }
+  }
+}
+.cardlist_table {
+  @apply relative flex-grow flex-shrink-0 overflow-y-scroll w-full text-sm text-left text-gray-500 dark:text-gray-400;
+  min-height: 450px;
+  height: calc(100vh - 250px);
+}
+.cardlist_table_head {
+  @apply text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+}
+.cardlist_table_row {
+  @apply bg-white border-b dark:bg-gray-900 dark:border-gray-700;
+}
+.card_grid {
+  @apply px-0;
+}
+.card--hidden {
+  display: none !important;
+}
+.card_action {
+  .label {
+    @apply ml-1;
+  }
+}
+.rarity_label {
+  @apply text-black rounded-sm;
+}
+[data-card_rarity="0"] {
+  .rarity_label {
+    @apply bg-yellow-100 dark:bg-yellow-50 text-gray-800;
+  }
+  .card_name {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+}
+[data-card_rarity="1"] {
+  .rarity_label {
+    @apply bg-amber-400;
+  }
+  .card_name {
+    @apply text-amber-800 dark:text-amber-300;
+  }
+}
+[data-card_rarity="2"] {
+  .rarity_label {
+    @apply bg-gradient-to-br from-pink-300 via-cyan-300 to-yellow-300;
+  }
+  .card_name {
+    @apply text-blue-800 dark:text-blue-300;
+  }
+}
+[data-selected="1"] {
+  @apply !bg-blue-100 dark:!bg-blue-600 dark:!bg-opacity-20;
+}
+[data-layout="table"] {
+  .cardlist_table_head {
+    @apply flex sticky top-0 z-10 py-1 items-center;
+  }
+  .cardlist_table_body {
+    @apply block;
+  }
+  .cardlist_table_row {
+    @apply flex flex-nowrap w-full items-center;
+    &:hover,
+    &:active {
+      .grid__wrapper {
+        @apply block absolute -top-11 left-8 w-max p-1 bg-gray-600 dark:bg-gray-800;
+      }
+    }
+    &:first-child {
+      .grid__wrapper {
+        @apply -top-4 bottom-auto;
+      }
+    }
+    &:last-child {
+      .grid__wrapper {
+        @apply -bottom-4 top-auto;
+      }
+    }
+    &:hover {
+      @apply bg-gray-100 dark:bg-gray-600;
+    }
+    &[data-selected="1"]:hover {
+      @apply bg-blue-200 dark:bg-blue-700 dark:bg-opacity-30;
+    }
+  }
+  .cardlist_table_item {
+    @apply p-2;
+  }
+  .grid__wrapper {
+    @apply hidden absolute z-10;
+  }
+  .card_grid {
+    @apply relative p-0;
+  }
+  .col-no,
+  .card_no {
+    @apply w-16 xl:w-28;
+  }
+  .card_no > * {
+    @apply justify-between;
+  }
+  .col-gridcount,
+  .card_gridcount {
+    @apply w-14 md:w-16;
+  }
+  .card_gridcount {
+    @apply text-end;
+  }
+  .col-sp,
+  .card_sp {
+    @apply w-16 md:w-24;
+  }
+  .card_sp {
+    @apply text-center;
+  }
+  .col-rarity,
+  .card_rarity {
+    @apply w-2 sm:w-20 md:w-1 lg:w-20;
+  }
+  .card_rarity {
+    @apply text-center px-0 text-xs;
+  }
+  .rarity_label {
+    @apply h-4;
+    & > * {
+      @apply hidden sm:inline md:hidden lg:inline;
+    }
+  }
+  .col-name,
+  .card_name {
+    @apply pl-2 text-start flex-grow;
+  }
+  .col-action,
+  .card_action {
+    @apply w-14;
+  }
+  .card_action {
+    @apply text-center;
+  }
+}
+[data-layout="grid"] {
+  @apply block;
+  .cardlist_table_head {
+    @apply hidden;
+  }
+  .cardlist_table_body {
+    @apply flex flex-wrap gap-2 py-2;
+  }
+  .cardlist_table_row {
+    @apply inline-grid transform-cpu drop-shadow-md shadow-black border-gray-400 dark:border-gray-700 dark:shadow-white grid-cols-8 w-40 row-auto border-2 rounded-lg p-1;
+  }
+  .cardlist_table_item {
+    @apply block border-none px-1 py-0;
+  }
+  .card_no {
+    @apply order-first col-span-4 pr-0;
+    .value::before {
+      content: "No.";
+      @apply mr-px;
+    }
+  }
+  .card_rarity {
+    @apply -order-12 col-span-4 p-0 text-xs place-self-end;
+  }
+  .rarity_label {
+    @apply px-1;
+  }
+  [data-card_rarity="0"] {
+    .card_gridcount {
+      @apply after:bg-violet-600 after:border-violet-900;
+    }
+  }
+  [data-card_rarity="1"] {
+    .card_gridcount {
+      @apply after:bg-gradient-to-b after:from-yellow-500 after:via-amber-700   after:to-yellow-700 after:border-amber-900;
+    }
+  }
+  [data-card_rarity="2"] {
+    .card_gridcount {
+      @apply after:bg-gradient-to-b after:from-pink-400 after:via-blue-600 after:to-cyan-400 after:border-blue-800;
+    }
+  }
+  .card_name {
+    @apply -order-10 flex justify-center whitespace-nowrap col-span-full font-bold text-sm pb-1 -mx-2;
+    > * {
+      @apply scale-100;
+    }
+  }
+  .card_grid {
+    @apply -order-9 col-span-full place-self-center;
+  }
+  .card_gridcount {
+    @apply -order-5 p-0 w-9 h-9 flex items-center justify-center col-span-2 relative z-10 text-center text-white font-medium text-base after:-z-10 after:-rotate-45 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-6 after:h-6 after:border-2 after:rounded-sm;
+  }
+  .card_sp {
+    @apply -order-3 col-span-3 mt-1 flex items-center;
+  }
+  .card_action {
+    @apply flex p-0 col-start-7 justify-start items-center;
+  }
+}
+
+.gridcount {
+  @apply py-1 relative left-1 z-10 font-normal text-center after:bg-violet-600 after:border-violet-900 dark:text-white text-base after:-z-10 after:-rotate-45 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-4 after:h-4 after:border-2 after:rounded-sm;
+}
+
+.deck-tab-items {
+  @apply -ml-2 flex;
+  & > * {
+    @apply ml-2;
+  }
+}
+.deck-tab-item {
+  @apply hidden flex-grow md:flex flex-col w-7/12 my-3;
+  & + & {
+    @apply w-5/12;
+  }
+}
+.deck-tab-item--active {
+  @apply flex;
+}
+.table-title-text {
+  @apply mt-2 ml-2 hidden md:inline;
+}
