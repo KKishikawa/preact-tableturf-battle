@@ -8,4 +8,3 @@ export function openShareDialog(code: string) {
     body: ShareBody({ code }),
   });
 }
-

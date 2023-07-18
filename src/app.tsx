@@ -1,5 +1,5 @@
 import { CardManager } from '@/components/cardManager';
-import { DeckManager } from "@/components/deckManager"
+import { DeckManager } from '@/components/deckManager';
 import { Header } from '@/components/header';
 import { GlobalProviders } from '@/global/globalProviders';
 

@@ -1,4 +1,4 @@
-import { type ComponentType , render } from 'preact';
+import { type ComponentType, render } from 'preact';
 
 export const OVERLAY_CONTAINER_ID = 'app-modal_container';
 /**

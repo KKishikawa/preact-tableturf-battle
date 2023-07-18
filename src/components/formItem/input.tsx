@@ -22,10 +22,10 @@ export const CustomInput = ({
     const onReset = () => {
       changeHasTextState(false);
     };
-    form.addEventListener("reset", onReset);
-    return ()=> {
-      form.removeEventListener("reset", onReset);
-    }
+    form.addEventListener('reset', onReset);
+    return () => {
+      form.removeEventListener('reset', onReset);
+    };
   }, [inputRef.current]);
   return (
     <div class="relative">

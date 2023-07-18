@@ -7,7 +7,6 @@ import { deckCodeLoad } from '@/global/cards/deckCodeLoadAction';
 import { isValidString } from '@/utils';
 import { message } from '@/utils/message';
 
-
 export const DeckCodeReaderForm = () => {
   const cardDispatcher = useContext(cardsDispatchContext);
   const formSubmitHandler = (e: h.JSX.TargetedEvent<HTMLFormElement>) => {

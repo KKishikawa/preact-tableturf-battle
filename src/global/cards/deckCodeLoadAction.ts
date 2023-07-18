@@ -5,7 +5,6 @@ import { decodeDeckCode } from '@/models/card';
 import { isValidString } from '@/utils';
 import { message } from '@/utils/message';
 
-
 export function deckCodeLoad(
   cardDispatcher: Dispatch<CardsActions>,
   code: string

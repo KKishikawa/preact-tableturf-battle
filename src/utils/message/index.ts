@@ -1,9 +1,7 @@
 import { AddInstantOverlayComp } from '../reactInstantComponent';
 
-import { messageClass , type MessageClass } from './classStyleSetting';
+import { messageClass, type MessageClass } from './classStyleSetting';
 import { Message } from './message';
-
-
 
 const MESSAGE_DURATION = 3000;
 

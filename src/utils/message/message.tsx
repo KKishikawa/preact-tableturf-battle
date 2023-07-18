@@ -1,11 +1,10 @@
-import  { type h } from 'preact';
+import { type h } from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
 
 import { classNames } from '@/utils/classNames';
 import { useSetTimeout } from '@/utils/useSetTimeout';
 
-import { closeMessageClass , type MessageClass } from './classStyleSetting';
-
+import { closeMessageClass, type MessageClass } from './classStyleSetting';
 
 export const TRANSITION_DURATION = 300;
 const transitionStyle: h.JSX.CSSProperties = {
