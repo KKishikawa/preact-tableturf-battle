@@ -3,8 +3,8 @@ services:
   node-dev:
     build: .
     volumes:
-      - project:/project
+      - workspaces:/workspaces
     environment:
       - TZ=Asia/Tokyo
 volumes:
-  project:
+  workspaces:
