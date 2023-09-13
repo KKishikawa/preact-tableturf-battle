@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:bookworm
 ARG NODE_VER=lts
 RUN apt -y update && apt -y upgrade && apt -y install curl
-RUN mkdir -p /workspaces/node_modules /workspaces/.pnpm_store && chown -R vscode:vscode /workspaces
+RUN mkdir -p /workspaces/node_modules /workspaces/.pnpm-store && chown -R vscode:vscode /workspaces
 
 USER vscode
 ENV PNPM_HOME=/home/vscode/.pnpm

@@ -7,10 +7,10 @@ services:
         - NODE_VER=18.16
     volumes:
       - node_modules:/workspaces/node_modules
-      - pnpm_store:/workspaces/.pnpm_store
+      - pnpm-store:/workspaces/.pnpm-store
       - .:/workspaces
     environment:
       - TZ=Asia/Tokyo
 volumes:
   node_modules:
-  pnpm_store:
+  pnpm-store:
