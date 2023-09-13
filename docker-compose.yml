@@ -6,8 +6,11 @@ services:
       args:
         - NODE_VER=18.16
     volumes:
-      - workspaces:/workspaces
+      - node_modules:/workspaces/node_modules
+      - pnpm_store:/workspaces/.pnpm_store
+      - .:/workspaces
     environment:
       - TZ=Asia/Tokyo
 volumes:
-  workspaces:
+  node_modules:
+  pnpm_store:
